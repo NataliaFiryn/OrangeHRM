@@ -1,0 +1,24 @@
+{
+  "name": "orangehrm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NataliaFiryn/OrangeHRM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NataliaFiryn/OrangeHRM/issues"
+  },
+  "homepage": "https://github.com/NataliaFiryn/OrangeHRM#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.37.1"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.0.2"
+  }
+}
