@@ -3,8 +3,11 @@ import CommonData from "../../CommonData";
 import { UserModel, UserRole, UserStatus } from "../UserModel";
 
 export class UserEnabledAdmin implements UserModel {
-    employeeName = 'EnabledAdmin';
-    userName = faker.person.fullName();
+    firstName = faker.person.firstName()
+    middleName = faker.person.middleName()
+    lastName = faker.person.lastName()
+    userName = this.firstName + '.' + this.lastName
+    employeeName = this.firstName + ' ' + this.middleName + ' ' + this.lastName
     role = UserRole.admin;
     status = UserStatus.enabled;
     password = CommonData.uniwersalPassword;

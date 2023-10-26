@@ -23,9 +23,12 @@ export class AdminPage {
         password: Locator;
         confirmPassword: Locator;
       }
-    #endpoint: string;
+
+      #endpoint = {
+        adminPage: '/web/index.php/api/v2/admin/',
+        users: '/web/index.php/api/v2/admin/users'
+      }
     
-  
     constructor(page: Page) {
       this.#page = page;
       this.#addBtn = this.#page.locator('.orangehrm-header-container [type="button"]');
@@ -46,8 +49,7 @@ export class AdminPage {
         password: this.#page.locator('[type="password"]').nth(0),
         confirmPassword: this.#page.locator('[type="password"]').nth(1)
       }
-      
-      this.#endpoint = '/web/index.php/api/v2/admin/'
+
     }
   
     async searchByField(fieldName:FieldName, value: string) {
@@ -68,7 +70,8 @@ export class AdminPage {
         await this.#page.getByRole('option', {name: user.status}).click();
         await this.#addUserField.name.fill(user.userName);
         await expect (this.#addUserField.name).not.toBeEmpty();
-        await this.#addUserField.employeeName.fill(user.employeeName);
+        await this.#addUserField.employeeName.type(user.employeeName);
+        await this.#page.getByText(user.employeeName).click()
         await expect (this.#addUserField.employeeName).not.toBeEmpty();
         await this.#addUserField.password.fill(user.password);
         await expect (this.#addUserField.password).not.toBeEmpty();
@@ -79,7 +82,7 @@ export class AdminPage {
 
     async saveNewUser(){
       await Promise.all([
-        this.#page.waitForResponse(this.#endpoint),
+        this.#page.waitForResponse(this.#endpoint.users),
         this.#searchBtn.click()
       ]);
     }

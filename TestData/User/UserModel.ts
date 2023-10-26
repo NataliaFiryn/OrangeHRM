@@ -1,6 +1,9 @@
 import { CommonData } from "../CommonData"
 
 export class UserModel {
+    firstName: string
+    middleName: string
+    lastName: string
     employeeName: string
     userName: string
     role: UserRole
